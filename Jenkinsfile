@@ -47,7 +47,9 @@ pipeline {
                 milestone(1)
                 //implement Kubernetes deployment here
                 kubernetesDeploy(
-                    kubeconfigId: 'kubeconfig',
+                    //kubeconfigId: 'kubeconfig',
+                    credentialsType: 'KubeConfig',
+                    kubeConfig: [path: '/var/lib/jenkins/workspace/config'],
                     configs: 'train-schedule-kube.yml',
                     enableConfigSubstitution: true
                 )
